@@ -10,6 +10,7 @@
     <version>1.0-SNAPSHOT</version>
     <modules>
         <module>01-helloworld</module>
+        <module>02-shapes</module>
     </modules>
 
     <properties>
