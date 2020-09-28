@@ -12,16 +12,16 @@ public class App
         Reader inputStreamReader = new InputStreamReader(inputStream);
         BufferedReader bufferedReader = new BufferedReader(inputStreamReader);
 
-        String shapeName = "";
+        String shapeName;
 
         do {
 
             System.out.print("Please type shape name (triangle, rectangle, square) or type 'exit': ");
             shapeName = bufferedReader.readLine();
 
-            Double a;
-            Double b;
-            Double c;
+            double a;
+            double b;
+            double c;
 
             switch (shapeName) {
 
