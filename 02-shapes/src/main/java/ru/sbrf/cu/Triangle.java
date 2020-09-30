@@ -35,15 +35,18 @@ public class Triangle extends Shape {
 
     @Override
     public double getPerimeter() {
-        return this.a+this.b+this.c;
+        return getA()+getB()+getC();
     }
 
     @Override
     public double getSquare() {
+        double a = getA();
+        double b = getB();
+        double c = getC();
         double s = -1.0;
         if ((a<(c+b)) && (b<(a+c)) && (c<(a+b))) {
-            double p = (this.a+this.b+this.c)/2;
-            s = Math.sqrt((p * (p - this.a)*(p - this.b)*(p - this.c)));
+            double p = (a+b+c)/2;
+            s = Math.sqrt((p*(p-a)*(p-b)*(p-c)));
         }
         return s;
     }

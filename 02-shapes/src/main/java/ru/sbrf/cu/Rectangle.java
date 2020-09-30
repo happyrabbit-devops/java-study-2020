@@ -5,9 +5,7 @@ public class Rectangle extends Shape {
     private double a;
     private double b;
 
-    public double getA() {
-        return a;
-    }
+    public double getA() { return a; }
 
     public void setA(double a) { this.a = a; }
 
@@ -26,12 +24,12 @@ public class Rectangle extends Shape {
 
     @Override
     public double getPerimeter() {
-        return 2*(this.a+this.b);
+        return 2*(getA()+getB());
     }
 
     @Override
     public double getSquare() {
-        return this.a*this.b;
+        return getA()*getB();
     }
 
     public Rectangle(double a, double b) {
