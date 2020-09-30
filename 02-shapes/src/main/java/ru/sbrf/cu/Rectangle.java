@@ -5,15 +5,15 @@ public class Rectangle extends Shape {
     private double a;
     private double b;
 
-    public double getA() { return a; }
+    private double getA() { return a; }
 
-    public void setA(double a) { this.a = a; }
+    private void setA(double a) { this.a = a; }
 
-    public double getB() {
+    private double getB() {
         return b;
     }
 
-    public void setB(double b) {
+    private void setB(double b) {
         this.b = b;
     }
 
@@ -32,7 +32,7 @@ public class Rectangle extends Shape {
         return getA()*getB();
     }
 
-    public Rectangle(double a, double b) {
+    Rectangle (double a, double b) {
         setA(a);
         setB(b);
         printInfo();

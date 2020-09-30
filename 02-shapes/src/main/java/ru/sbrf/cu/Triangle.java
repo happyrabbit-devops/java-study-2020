@@ -6,25 +6,25 @@ public class Triangle extends Shape {
     private double b;
     private double c;
 
-    public double getA() {
+    private double getA() {
         return a;
     }
 
-    public void setA(double a) { this.a = a; }
+    private void setA(double a) { this.a = a; }
 
-    public double getB() {
+    private double getB() {
         return b;
     }
 
-    public void setB(double b) {
+    private void setB(double b) {
         this.b = b;
     }
 
-    public double getC() {
+    private double getC() {
         return c;
     }
 
-    public void setC(double c) {
+    private void setC(double c) {
         this.c = c;
     }
 
@@ -51,7 +51,7 @@ public class Triangle extends Shape {
         return s;
     }
 
-    public Triangle(double a, double b, double c) {
+    Triangle (double a, double b, double c) {
         setA(a);
         setB(b);
         setC(c);
