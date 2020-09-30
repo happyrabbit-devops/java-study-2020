@@ -10,9 +10,7 @@ public class Triangle extends Shape {
         return a;
     }
 
-    public void setA(double a) {
-        this.a = a;
-    }
+    public void setA(double a) { this.a = a; }
 
     public double getB() {
         return b;
