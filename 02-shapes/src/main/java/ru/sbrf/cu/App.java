@@ -39,18 +39,22 @@ public class App
                     break;
 
                 case "rectangle":
-                case "square":
 
                     System.out.print("A = ");
                     a = Double.parseDouble(bufferedReader.readLine());
                     System.out.print("B = ");
                     b = Double.parseDouble(bufferedReader.readLine());
 
-                    if (shapeName.equals("rectangle")) {
-                        shape = new Rectangle(a, b);
-                    } else {
-                        shape = new Square(a, b);
-                    }
+                    shape = new Rectangle(a, b);
+
+                    break;
+
+                case "square":
+
+                    System.out.print("A = ");
+                    a = Double.parseDouble(bufferedReader.readLine());
+
+                    shape = new Square(a);
 
                     break;
 

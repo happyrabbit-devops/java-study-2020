@@ -9,9 +9,7 @@ public class Rectangle extends Shape {
 
     private void setA(double a) { this.a = a; }
 
-    private double getB() {
-        return b;
-    }
+    private double getB() { return b; }
 
     private void setB(double b) {
         this.b = b;
