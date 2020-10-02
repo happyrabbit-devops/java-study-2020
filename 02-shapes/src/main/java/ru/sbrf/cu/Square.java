@@ -12,7 +12,7 @@ public class Square extends Shape {
     public ShapeType getShapeType () { return ShapeType.SQUARE; }
 
     @Override
-    public double getPerimeter() { return 4*(getA()); }
+    public double getPerimeter() { return 4*getA(); }
 
     @Override
     public double getSquare() {
