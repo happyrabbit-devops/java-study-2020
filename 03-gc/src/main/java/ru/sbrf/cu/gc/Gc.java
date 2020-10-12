@@ -27,7 +27,7 @@ class Gc implements GcMBean {
 
         // Benchmarking (очистка HashMap в каждом цикле)
         // Map<OOMObject, Integer> gcMap = new HashMap<>();
-        //Map<NormalObject, Integer> gcMap = new HashMap<>();
+        // Map<NormalObject, Integer> gcMap = new HashMap<>();
 
         for (int j = 0; j < size; j++) {
           gcMap.put(new OOMObject("someField"), 1);
