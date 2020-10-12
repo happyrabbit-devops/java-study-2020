@@ -5,11 +5,11 @@ import java.util.Map;
 
 class Gc implements GcMBean {
 
-  private final int loopCounter;
+  private final int counter;
   private volatile int size = 0;
 
-  Gc(int loopCounter) {
-    this.loopCounter = loopCounter;
+  Gc(int counter) {
+    this.counter = counter;
   }
 
   void run() throws InterruptedException {
@@ -18,7 +18,7 @@ class Gc implements GcMBean {
     Map<OOMObject, Integer> gcMap = new HashMap<>();
     //Map<NormalObject, Integer> gcMap = new HashMap<>();
 
-    for (int i = 0; i < loopCounter; i++) {
+    for (int i = 0; i < counter; i++) {
 
         /*
           HashMap не позволяет использовать дубликаты ключей. В случае неверно определенного метода equals()
