@@ -1,0 +1,46 @@
+Новый процесс pid: 14540@DESKTOP-SDI9R9D
+GC name:G1 Young Generation
+GC name:G1 Old Generation
+new size:500000
+start:364 Name:G1 Young Generation, action:end of minor GC, gcCause:G1 Evacuation Pause(28 ms)
+start:27953 Name:G1 Young Generation, action:end of minor GC, gcCause:G1 Evacuation Pause(32 ms)
+start:28047 Name:G1 Young Generation, action:end of minor GC, gcCause:G1 Evacuation Pause(21 ms)
+start:28160 Name:G1 Young Generation, action:end of minor GC, gcCause:G1 Evacuation Pause(22 ms)
+start:55763 Name:G1 Young Generation, action:end of minor GC, gcCause:G1 Evacuation Pause(23 ms)
+start:55839 Name:G1 Young Generation, action:end of minor GC, gcCause:G1 Evacuation Pause(24 ms)
+start:83548 Name:G1 Young Generation, action:end of minor GC, gcCause:G1 Evacuation Pause(31 ms)
+start:83626 Name:G1 Young Generation, action:end of minor GC, gcCause:G1 Evacuation Pause(25 ms)
+start:111216 Name:G1 Young Generation, action:end of minor GC, gcCause:G1 Evacuation Pause(39 ms)
+start:138897 Name:G1 Young Generation, action:end of minor GC, gcCause:G1 Evacuation Pause(70 ms)
+start:166631 Name:G1 Young Generation, action:end of minor GC, gcCause:G1 Evacuation Pause(83 ms)
+start:166758 Name:G1 Young Generation, action:end of minor GC, gcCause:G1 Humongous Allocation(30 ms)
+start:167158 Name:G1 Young Generation, action:end of minor GC, gcCause:G1 Evacuation Pause(47 ms)
+start:194783 Name:G1 Young Generation, action:end of minor GC, gcCause:G1 Evacuation Pause(35 ms)
+start:194882 Name:G1 Young Generation, action:end of minor GC, gcCause:G1 Evacuation Pause(41 ms)
+start:194933 Name:G1 Young Generation, action:end of minor GC, gcCause:G1 Evacuation Pause(15 ms)
+start:194948 Name:G1 Old Generation, action:end of major GC, gcCause:G1 Evacuation Pause(243 ms)
+start:222781 Name:G1 Young Generation, action:end of minor GC, gcCause:G1 Evacuation Pause(34 ms)
+start:222867 Name:G1 Young Generation, action:end of minor GC, gcCause:G1 Evacuation Pause(30 ms)
+start:250488 Name:G1 Young Generation, action:end of minor GC, gcCause:G1 Evacuation Pause(48 ms)
+start:250536 Name:G1 Old Generation, action:end of major GC, gcCause:G1 Evacuation Pause(287 ms)
+start:250861 Name:G1 Young Generation, action:end of minor GC, gcCause:G1 Evacuation Pause(35 ms)
+start:250896 Name:G1 Old Generation, action:end of major GC, gcCause:G1 Evacuation Pause(294 ms)
+java.lang.OutOfMemoryError: Java heap space
+Dumping heap to C:\Temp\java_pid14540.hprof ...
+Heap dump file created [485879155 bytes in 2.885 secs]
+Exception in thread "main" java.lang.OutOfMemoryError: Java heap space
+start:251489 Name:G1 Old Generation, action:end of major GC, gcCause:G1 Evacuation Pause(285 ms)
+start:251774 Name:G1 Young Generation, action:end of minor GC, gcCause:G1 Evacuation Pause(0 ms)
+	at java.base/java.util.HashMap.newNode(HashMap.java:1797)
+	at java.base/java.util.HashMap.putVal(HashMap.java:626)
+	at java.base/java.util.HashMap.put(HashMap.java:607)
+start:251774 Name:G1 Old Generation, action:end of major GC, gcCause:G1 Evacuation Pause(302 ms)
+	at ru.sbrf.cu.gc.Gc.run(Benchmark.java:32)
+	at ru.sbrf.cu.gc.App.main(App.java:48)
+start:252076 Name:G1 Old Generation, action:end of major GC, gcCause:G1 Evacuation Pause(297 ms)
+start:252373 Name:G1 Young Generation, action:end of minor GC, gcCause:G1 Evacuation Pause(0 ms)
+start:252373 Name:G1 Old Generation, action:end of major GC, gcCause:G1 Evacuation Pause(262 ms)
+start:252635 Name:G1 Old Generation, action:end of major GC, gcCause:G1 Evacuation Pause(292 ms)
+start:252927 Name:G1 Young Generation, action:end of minor GC, gcCause:G1 Evacuation Pause(0 ms)
+
+Process finished with exit code 1
