@@ -1,3 +1,16 @@
+Параметры вызова:
+
+-Xms256m
+-Xmx256m
+-Xlog:gc=debug:file=C:\Temp\gc-test.log:tags,uptime,time,level:filecount=5,filesize=10m
+-XX:+HeapDumpOnOutOfMemoryError
+-XX:HeapDumpPath=C:\Temp
+-XX:+UseG1GC
+
+Интервал: 27500 миллисекунд
+Размер HashMap: 500000
+
+
 Новый процесс pid: 14540@DESKTOP-SDI9R9D
 GC name:G1 Young Generation
 GC name:G1 Old Generation
