@@ -11,6 +11,7 @@
     <modules>
         <module>01-helloworld</module>
         <module>02-shapes</module>
+        <module>04-linked</module>
     </modules>
 
     <properties>
@@ -35,7 +36,27 @@
         <maven-assembly-plugin.version>3.2.0</maven-assembly-plugin.version>
         <maven-assembly-plugin.descriptorSuffix>jar-with-dependencies</maven-assembly-plugin.descriptorSuffix>
 
+        <junit.jupiter.version>5.5.2</junit.jupiter.version>
+        <junit.platform.version>1.5.2</junit.platform.version>
+
     </properties>
+
+    <dependencyManagement>
+        <dependencies>
+            <dependency>
+                <groupId>com.google.guava</groupId>
+                <artifactId>guava</artifactId>
+                <version>${com.google.guava.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.junit.jupiter</groupId>
+                <artifactId>junit-jupiter-engine</artifactId>
+                <version>5.6.2</version>
+                <scope>test</scope>
+            </dependency>
+        </dependencies>
+    </dependencyManagement>
+
 
     <developers>
         <developer>
