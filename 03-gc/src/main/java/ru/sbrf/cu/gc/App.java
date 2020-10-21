@@ -36,7 +36,7 @@ public class App {
         switchOnMonitoring();
         long beginTime = System.currentTimeMillis();
 
-        int size = 5 * 1000 * 100;
+        int size = 5 * 1000 * 20;
         int counter = 100;
 
         MBeanServer mbs = ManagementFactory.getPlatformMBeanServer();
@@ -49,7 +49,7 @@ public class App {
 
         System.out.println("Общее время:" + (System.currentTimeMillis() - beginTime) / 1000 + " сек.");
         System.out.println("Количество сборок GC: " + actionCnt);
-        System.out.println("Общее время сборок GC: " + allDuration / 1000 + " сек.");
+        System.out.println("Общее время сборок GC: " + allDuration + " мсек.");
     }
 
     private static void switchOnMonitoring() {
