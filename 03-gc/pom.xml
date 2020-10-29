@@ -9,8 +9,6 @@
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
-    <artifactId>02-shapes</artifactId>
+    <artifactId>03-gc</artifactId>
 
-    <name>02-shapes</name>
-  
 </project>
