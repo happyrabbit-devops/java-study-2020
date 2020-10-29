@@ -11,44 +11,47 @@ class MyListTest {
     private MyList<Integer> list;
 
     @BeforeEach
-    void beforeAll() {
+    public void beforeAll() {
         list = new MyLinkedList<>();
-        list.add( 1 );
-        list.add( 2 );
-        list.add( 10 );
+        list.sortedAdd( 1 );
+        list.sortedAdd( 2 );
+        list.sortedAdd( 10 );
     }
 
     @DisplayName("добавлять элементы и корректно давать размер")
     @Test
-    void testAdd() {
+    public void testAdd() {
+        list.print();
         assertEquals( 3, list.size() );
     }
 
     @DisplayName("находить элемент по индексу")
     @Test
-    void testGet() {
+    public void testGet() {
         assertEquals( Integer.valueOf( 2 ), list.get( 1 ) );
     }
 
     @DisplayName("возвращать null если выходим за размер")
     @Test
-    void testGetWithNull() {
+    public void testGetWithNull() {
         assertNull( list.get( 3 ) );
     }
 
     @DisplayName("находить удалять по элемент по совпадению")
     @Test
-    void testRemoveFirst() {
-        list.add( 2 );
+    public void testRemoveFirst() {
+        list.sortedAdd( 2 );
+        list.print();
         boolean result = list.remove( 2 );
         assertTrue( result );
-        assertEquals( Integer.valueOf( 2 ), list.get( 10 ) );
+        assertEquals( Integer.valueOf( 2 ), list.get( 1 ) );
         assertEquals( 3, list.size() );
+        list.print();
     }
 
     @DisplayName("возвращать false если удаление по элементу не удалось")
     @Test
-    void testRemoveFalse() {
+    public void testRemoveFalse() {
         boolean result = list.remove( 3 );
         assertFalse( result );
         assertEquals( 3, list.size() );
@@ -56,11 +59,12 @@ class MyListTest {
 
     @DisplayName("кооректно сортировать Integer")
     @Test
-    void testSort() {
-        list.add( 6 );
-        list.add( 4 );
+    public void testSort() {
+        list.sortedAdd( 6 );
+        list.sortedAdd( 4 );
         // 1,2,10,6,4
-        list.sort();
+        //list.sort();
+        list.print();
 
         assertEquals( 5, list.size() );
         assertEquals( Integer.valueOf( 1 ), list.get( 0 ) );
@@ -68,5 +72,13 @@ class MyListTest {
         assertEquals( Integer.valueOf( 4 ), list.get( 2 ) );
         assertEquals( Integer.valueOf( 6 ), list.get( 3 ) );
         assertEquals( Integer.valueOf( 10 ), list.get( 4 ) );
+    }
+
+    @DisplayName("ошибка если индекс больше размера")
+    @Test
+    void testIndexException() {
+        assertThrows( MyLinkedListIndexException.class, () ->
+                list.get( 999 )
+        );
     }
 }

@@ -4,6 +4,9 @@ public interface MyList<T extends Comparable<T>> {
     // Добавить новый элемент в конец списка
     void add(T item);
 
+    // Добавить новый элемент в конец списка отсортированным способом
+    void sortedAdd(T item);
+
     // Количество элеметов в списке
     int size();
 
@@ -14,6 +17,8 @@ public interface MyList<T extends Comparable<T>> {
     boolean remove(T item);
 
     // Допускаем, что T - comparable
-    // TODO реализовать другой алгоритм сортировки
-    void sort();
+    // реализовать другой алгоритм сортировки - реализован sortedAdd
+    //void sort();
+
+    void print();
 }
