@@ -177,43 +177,6 @@ public class MyLinkedList<T extends Comparable<T>> implements MyList<T>, MyQueue
         System.out.println();
     }
 
-    /*@Override
-    public void sort() {
-
-        print();
-
-        boolean wasChange = true;
-        while ( wasChange ){
-            wasChange = false;
-            ListItem<T> first = head;
-            ListItem<T> second = head.next;
-            while ( second != null ){
-                wasChange = wasChange || compareAndReplaceItem(first, second);
-                first = second;
-                second = second.next;
-            }
-        }
-
-        print();
-    }
-
-    private boolean compareAndReplaceItem( ListItem<T> first, ListItem<T> second ) {
-        if (second.value.compareTo( first.value ) < 0){
-            second.prev = first.prev;
-            if (second.prev == null){
-                head = second;
-            }
-            first.next = second.next;
-            if (first.next == null){
-                tail = first;
-            }
-            second.next = first;
-            first.prev = second;
-            return true;
-        }
-        return false;
-    }*/
-
     private class ListItem<T> {
         T value;
         ListItem<T> prev;
