@@ -11,4 +11,6 @@
 
     <artifactId>02-shapes</artifactId>
 
+    <name>02-shapes</name>
+  
 </project>
