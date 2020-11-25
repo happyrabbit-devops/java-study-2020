@@ -17,16 +17,6 @@
 
     <dependencies>
         <dependency>
-            <groupId>org.junit.jupiter</groupId>
-            <artifactId>junit-jupiter-api</artifactId>
-            <version>5.3.2</version>
-        </dependency>
-        <dependency>
-            <groupId>org.junit.jupiter</groupId>
-            <artifactId>junit-jupiter-params</artifactId>
-            <version>5.3.2</version>
-        </dependency>
-        <dependency>
             <groupId>org.mockito</groupId>
             <artifactId>mockito-all</artifactId>
             <version>1.10.19</version>
@@ -36,7 +26,6 @@
             <artifactId>opencsv</artifactId>
             <version>2.3</version>
         </dependency>
-
         <dependency>
             <groupId>org.assertj</groupId>
             <artifactId>assertj-core</artifactId>
@@ -53,14 +42,9 @@
                 <version>2.21.0</version>
                 <dependencies>
                     <dependency>
-                        <groupId>org.junit.platform</groupId>
-                        <artifactId>junit-platform-surefire-provider</artifactId>
-                        <version>1.2.0-M1</version>
-                    </dependency>
-                    <dependency>
                         <groupId>org.junit.jupiter</groupId>
-                        <artifactId>junit-jupiter-engine</artifactId>
-                        <version>5.3.2</version>
+                        <artifactId>junit-jupiter</artifactId>
+                        <version>${junit.jupiter.version}</version>
                     </dependency>
                 </dependencies>
             </plugin>

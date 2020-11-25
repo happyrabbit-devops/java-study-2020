@@ -13,6 +13,7 @@
         <module>02-shapes</module>
         <module>03-gc</module>
         <module>04-linked</module>
+        <module>05-annotations</module>
     </modules>
 
     <properties>
@@ -51,8 +52,8 @@
             </dependency>
             <dependency>
                 <groupId>org.junit.jupiter</groupId>
-                <artifactId>junit-jupiter-engine</artifactId>
-                <version>5.6.2</version>
+                <artifactId>junit-jupiter</artifactId>
+                <version>${junit.jupiter.version}</version>
                 <scope>test</scope>
             </dependency>
         </dependencies>
@@ -61,14 +62,8 @@
     <dependencies>
         <dependency>
             <groupId>org.junit.jupiter</groupId>
-            <artifactId>junit-jupiter-engine</artifactId>
+            <artifactId>junit-jupiter</artifactId>
             <version>${junit.jupiter.version}</version>
-            <scope>test</scope>
-        </dependency>
-        <dependency>
-            <groupId>org.junit.platform</groupId>
-            <artifactId>junit-platform-runner</artifactId>
-            <version>${junit.platform.version}</version>
             <scope>test</scope>
         </dependency>
     </dependencies>
