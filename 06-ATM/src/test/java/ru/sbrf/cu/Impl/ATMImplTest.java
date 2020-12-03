@@ -1,10 +1,14 @@
-package ru.sbrf.cu.impl;
+package ru.sbrf.cu.Impl;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import ru.sbrf.cu.ATM;
+import ru.sbrf.cu.Exceptions.CardNotFoundException;
+import ru.sbrf.cu.Exceptions.NotEnoughATMMoneyException;
+import ru.sbrf.cu.Exceptions.NotEnoughMoneyException;
 import ru.sbrf.cu.PlasticCard;
+import ru.sbrf.cu.Enums.BanknoteType;
 
 import java.util.HashMap;
 import java.util.HashSet;

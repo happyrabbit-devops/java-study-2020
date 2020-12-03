@@ -1,6 +1,7 @@
-package ru.sbrf.cu.impl;
+package ru.sbrf.cu.Impl;
 
 import ru.sbrf.cu.OperationReceipt;
+import ru.sbrf.cu.Enums.BanknoteType;
 
 import java.util.HashMap;
 

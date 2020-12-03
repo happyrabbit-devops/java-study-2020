@@ -1,4 +1,4 @@
-package ru.sbrf.cu.impl;
+package ru.sbrf.cu.Exceptions;
 
 public class NotEnoughMoneyException extends Exception {
 
@@ -6,7 +6,7 @@ public class NotEnoughMoneyException extends Exception {
         super(message);
     }
 
-    NotEnoughMoneyException() {
+    public NotEnoughMoneyException() {
         super();
     }
 }

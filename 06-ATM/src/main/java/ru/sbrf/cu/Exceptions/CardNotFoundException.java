@@ -1,4 +1,4 @@
-package ru.sbrf.cu.impl;
+package ru.sbrf.cu.Exceptions;
 
 public class CardNotFoundException extends Exception {
 
@@ -6,7 +6,7 @@ public class CardNotFoundException extends Exception {
         super(message);
     }
 
-    CardNotFoundException() {
+    public CardNotFoundException() {
         super();
     }
 }

@@ -1,4 +1,4 @@
-package ru.sbrf.cu.impl;
+package ru.sbrf.cu.Exceptions;
 
 public class NotEnoughATMMoneyException extends Exception {
 
@@ -6,7 +6,7 @@ public class NotEnoughATMMoneyException extends Exception {
         super(message);
     }
 
-    NotEnoughATMMoneyException() {
+    public NotEnoughATMMoneyException() {
         super();
     }
 }

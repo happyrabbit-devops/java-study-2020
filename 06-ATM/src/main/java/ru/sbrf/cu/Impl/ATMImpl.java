@@ -1,14 +1,18 @@
-package ru.sbrf.cu.impl;
+package ru.sbrf.cu.Impl;
 
 import lombok.SneakyThrows;
 import ru.sbrf.cu.ATM;
+import ru.sbrf.cu.Exceptions.CardNotFoundException;
+import ru.sbrf.cu.Exceptions.NotEnoughATMMoneyException;
+import ru.sbrf.cu.Exceptions.NotEnoughMoneyException;
 import ru.sbrf.cu.PlasticCard;
+import ru.sbrf.cu.Enums.BanknoteType;
 
 import java.util.HashMap;
 import java.util.Scanner;
 import java.util.Set;
 
-import static ru.sbrf.cu.impl.BanknoteOperations.depositBanknotes;
+import static ru.sbrf.cu.Utils.BanknoteOperations.depositBanknotes;
 
 public class ATMImpl implements ATM {
 

@@ -1,8 +1,8 @@
 package ru.sbrf.cu;
 
-import ru.sbrf.cu.impl.ATMImpl;
-import ru.sbrf.cu.impl.BanknoteType;
-import ru.sbrf.cu.impl.PlasticCardImpl;
+import ru.sbrf.cu.Impl.ATMImpl;
+import ru.sbrf.cu.Enums.BanknoteType;
+import ru.sbrf.cu.Impl.PlasticCardImpl;
 
 import java.util.*;
 

@@ -1,4 +1,4 @@
-package ru.sbrf.cu.impl;
+package ru.sbrf.cu.Enums;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;

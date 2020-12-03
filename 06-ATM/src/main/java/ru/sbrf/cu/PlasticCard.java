@@ -1,8 +1,8 @@
 package ru.sbrf.cu;
 
-import ru.sbrf.cu.impl.BanknoteType;
-import ru.sbrf.cu.impl.NotEnoughATMMoneyException;
-import ru.sbrf.cu.impl.NotEnoughMoneyException;
+import ru.sbrf.cu.Enums.BanknoteType;
+import ru.sbrf.cu.Exceptions.NotEnoughATMMoneyException;
+import ru.sbrf.cu.Exceptions.NotEnoughMoneyException;
 
 import java.util.HashMap;
 

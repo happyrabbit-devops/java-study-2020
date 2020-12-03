@@ -1,12 +1,15 @@
-package ru.sbrf.cu.impl;
+package ru.sbrf.cu.Impl;
 
+import ru.sbrf.cu.Exceptions.NotEnoughATMMoneyException;
+import ru.sbrf.cu.Exceptions.NotEnoughMoneyException;
 import ru.sbrf.cu.OperationReceipt;
 import ru.sbrf.cu.PlasticCard;
+import ru.sbrf.cu.Enums.BanknoteType;
 
 import java.util.HashMap;
 
-import static ru.sbrf.cu.impl.BanknoteOperations.totalAmount;
-import static ru.sbrf.cu.impl.BanknoteOperations.withdrawBanknotes;
+import static ru.sbrf.cu.Utils.BanknoteOperations.totalAmount;
+import static ru.sbrf.cu.Utils.BanknoteOperations.withdrawBanknotes;
 
 public class PlasticCardImpl implements PlasticCard {
 
