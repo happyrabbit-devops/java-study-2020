@@ -8,7 +8,6 @@ import ru.sbrf.cu.PlasticCard;
 
 import java.util.HashMap;
 import java.util.HashSet;
-import java.util.concurrent.atomic.AtomicReference;
 
 import static org.junit.jupiter.api.Assertions.*;
 

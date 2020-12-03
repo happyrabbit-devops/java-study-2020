@@ -3,7 +3,6 @@ package ru.sbrf.cu;
 import ru.sbrf.cu.impl.BanknoteType;
 import ru.sbrf.cu.impl.NotEnoughATMMoneyException;
 import ru.sbrf.cu.impl.NotEnoughMoneyException;
-import ru.sbrf.cu.impl.OperationReceipt;
 
 import java.util.HashMap;
 

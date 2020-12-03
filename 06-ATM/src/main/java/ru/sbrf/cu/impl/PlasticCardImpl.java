@@ -1,5 +1,6 @@
 package ru.sbrf.cu.impl;
 
+import ru.sbrf.cu.OperationReceipt;
 import ru.sbrf.cu.PlasticCard;
 
 import java.util.HashMap;
@@ -72,7 +73,7 @@ public class PlasticCardImpl implements PlasticCard {
         decBalance( amount );
 
         // Возврат чека об операции
-        return new OperationReceipt( amount, withdrawBanknotes );
+        return new OperationReceiptImpl( amount, withdrawBanknotes );
     }
 
     public OperationReceipt putBanknotes( HashMap<BanknoteType, Integer> putBanknotes ) {
@@ -84,7 +85,7 @@ public class PlasticCardImpl implements PlasticCard {
 
         incBalance ( deposit );
 
-        return new OperationReceipt( deposit );
+        return new OperationReceiptImpl( deposit );
     }
 
     public PlasticCardImpl( String lastName, int pinCode, long balance ) {
