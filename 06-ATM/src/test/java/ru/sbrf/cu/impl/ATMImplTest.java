@@ -59,7 +59,7 @@ class ATMImplTest {
         myBanknotes.put( BanknoteType.THOUSAND, 1 );
         myBanknotes.put( BanknoteType.FIVETHOUSAND, 1 );
 
-        var plasticCard = atm.depositMoney(myBanknotes, new PlasticCardImpl( "Pavel Ivanov", 2323));
+        var plasticCard = atm.depositMoney( myBanknotes, new PlasticCardImpl( "Pavel Ivanov", 2323) );
         assertEquals(10006599, plasticCard.getBalance());
     }
 
@@ -67,7 +67,7 @@ class ATMImplTest {
     @Test
     void testCardNotFound() {
         assertThrows( CardNotFoundException.class, () ->
-                System.out.println(atm.withdrawMoney(12345, new PlasticCardImpl("Santa Klaus", 7777)))
+                System.out.println( atm.withdrawMoney(12345, new PlasticCardImpl("Santa Klaus", 7777)) )
         );
     }
 
@@ -75,7 +75,7 @@ class ATMImplTest {
     @Test
     void testNotEnoughMoney() {
         assertThrows( NotEnoughMoneyException.class, () ->
-                System.out.println(atm.withdrawMoney(999999999, new PlasticCardImpl( "Pavel Ivanov", 2323)))
+                System.out.println( atm.withdrawMoney(999999999, new PlasticCardImpl( "Pavel Ivanov", 2323)) )
         );
     }
 
