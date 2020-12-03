@@ -4,7 +4,6 @@ import java.lang.annotation.Annotation;
 import java.lang.reflect.Method;
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.List;
 import java.util.concurrent.atomic.AtomicReference;
 
 public class AnnotationSample {
@@ -68,8 +67,10 @@ public class AnnotationSample {
         setFieldValue( objectWorker, "name", "code" );
         callMethod( objectWorker, "makeWork3" );
 
-
         // Запуск класса-теста:
+        System.out.println( "----------" );
+        System.out.println( "FrameWork!" );
+        System.out.println( "----------" );
 
         var runBefore = new ArrayList<>();
         var runTest = new ArrayList<>();
@@ -82,42 +83,37 @@ public class AnnotationSample {
             Annotation[] annotations = method.getDeclaredAnnotations();
             for ( Annotation annotation: annotations ) {
                 String annotationName = annotation.annotationType().getSimpleName();
-                if ( annotationName.equals("Before") ) {
+                if ( annotationName.equals( "Before" ) ) {
                     runBefore.add(method.getName());
                 }
-                if ( annotationName.equals("Test") ) {
+                if ( annotationName.equals( "Test" ) ) {
                     runTest.add(method.getName());
                 }
-                if ( annotationName.equals("After") ) {
+                if ( annotationName.equals( "After" ) ) {
                     runAfter.add(method.getName());
                 }
             }
         }
 
-        System.out.println( "----------" );
-        System.out.println( "FrameWork!" );
-        System.out.println( "----------" );
-
-        runTest.forEach(methodTest -> {
+        runTest.forEach( methodTest -> {
             AtomicReference<String> exceptionLog = new AtomicReference<>("");
             try {
-                TestClass object = instantiate( TestClass.class);
-                runBefore.forEach(methodBefore -> {
-                    exceptionLog.set( "Before: " + methodBefore);
+                TestClass object = instantiate( TestClass.class );
+                runBefore.forEach( methodBefore -> {
+                    exceptionLog.set( "Before: " + methodBefore );
                     callMethod( object, (String)methodBefore );
                 });
                 exceptionLog.set( "Test: " + methodTest );
-                callMethod(object, (String)methodTest);
-                runAfter.forEach(methodAfter -> {
+                callMethod( object, (String)methodTest );
+                runAfter.forEach( methodAfter -> {
                     exceptionLog.set( "After: " + methodAfter );
                     callMethod( object, (String) methodAfter );
                 });
             } catch ( Exception e ) {
-                System.out.println("Ошибка при выполнении ("+exceptionLog+"): "+e.toString());
+                System.out.println( "Ошибка при выполнении (" + exceptionLog + "): " + e.toString() );
             } finally {
                 System.out.println( "Тест " + methodTest + " завершен!" );
             }
         });
-
     }
 }
