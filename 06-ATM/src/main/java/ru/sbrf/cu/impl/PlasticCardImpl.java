@@ -5,6 +5,9 @@ import ru.sbrf.cu.PlasticCard;
 
 import java.util.HashMap;
 
+import static ru.sbrf.cu.impl.BanknoteOperations.totalAmount;
+import static ru.sbrf.cu.impl.BanknoteOperations.withdrawBanknotes;
+
 public class PlasticCardImpl implements PlasticCard {
 
     private String lastName;
@@ -58,16 +61,13 @@ public class PlasticCardImpl implements PlasticCard {
 
         // Выдаем банкноты
         var withdrawBanknotes = new HashMap<BanknoteType, Integer>();
-        withdrawBanknotes.put(BanknoteType.ONEHUNDRED, cntWithdraw100);
-        withdrawBanknotes.put(BanknoteType.FIVEHUNDRED, cntWithdraw500);
-        withdrawBanknotes.put(BanknoteType.THOUSAND, cntWithdraw1000);
-        withdrawBanknotes.put(BanknoteType.FIVETHOUSAND, cntWithdraw5000);
+        withdrawBanknotes.put( BanknoteType.ONEHUNDRED, cntWithdraw100 );
+        withdrawBanknotes.put( BanknoteType.FIVEHUNDRED, cntWithdraw500 );
+        withdrawBanknotes.put( BanknoteType.THOUSAND, cntWithdraw1000 );
+        withdrawBanknotes.put( BanknoteType.FIVETHOUSAND, cntWithdraw5000 );
 
         // Обновляем число банкнот в АТМ
-        atmBanknotes.put(BanknoteType.ONEHUNDRED, atmBanknotes.get(BanknoteType.ONEHUNDRED) - cntWithdraw100);
-        atmBanknotes.put(BanknoteType.FIVEHUNDRED, atmBanknotes.get(BanknoteType.FIVEHUNDRED) - cntWithdraw500);
-        atmBanknotes.put(BanknoteType.THOUSAND, atmBanknotes.get(BanknoteType.THOUSAND) - cntWithdraw1000);
-        atmBanknotes.put(BanknoteType.FIVETHOUSAND, atmBanknotes.get(BanknoteType.FIVETHOUSAND) - cntWithdraw5000);
+        withdrawBanknotes( atmBanknotes, withdrawBanknotes );
 
         amount = cntWithdraw5000*den5000 + cntWithdraw1000*den1000 + cntWithdraw500*den500 + cntWithdraw100*den100;
         decBalance( amount );
@@ -78,10 +78,7 @@ public class PlasticCardImpl implements PlasticCard {
 
     public OperationReceipt putBanknotes( HashMap<BanknoteType, Integer> putBanknotes ) {
 
-        long deposit = putBanknotes.get(BanknoteType.ONEHUNDRED) * BanknoteType.ONEHUNDRED.getDenomination() +
-                       putBanknotes.get(BanknoteType.FIVEHUNDRED) * BanknoteType.FIVEHUNDRED.getDenomination() +
-                       putBanknotes.get(BanknoteType.THOUSAND) * BanknoteType.THOUSAND.getDenomination() +
-                       putBanknotes.get(BanknoteType.FIVETHOUSAND) * BanknoteType.FIVETHOUSAND.getDenomination();
+        long deposit = totalAmount( putBanknotes );
 
         incBalance ( deposit );
 
@@ -94,8 +91,8 @@ public class PlasticCardImpl implements PlasticCard {
         this.balance = balance;
     }
 
-    PlasticCardImpl(String lastName, int pinCode) {
-        this(lastName, pinCode, 0);
+    PlasticCardImpl( String lastName, int pinCode ) {
+        this( lastName, pinCode, 0 );
     }
 
     @Override

@@ -8,6 +8,8 @@ import java.util.HashMap;
 import java.util.Scanner;
 import java.util.Set;
 
+import static ru.sbrf.cu.impl.BanknoteOperations.depositBanknotes;
+
 public class ATMImpl implements ATM {
 
     // делаем сет так как все карты разные
@@ -33,10 +35,13 @@ public class ATMImpl implements ATM {
     }
 
     public PlasticCard depositMoney( HashMap<BanknoteType, Integer> putBanknotes, PlasticCard cashCardToCheck ) throws CardNotFoundException {
-        PlasticCard resultCard = null;
         for (PlasticCard plasticCard : paySystemDB) {
             if (plasticCard.equals(cashCardToCheck)) {
                 plasticCard.putBanknotes(putBanknotes).printInfoDeposit();
+
+                // Обновляем число банкнот в АТМ
+                depositBanknotes(banknotes, putBanknotes);
+
                 return plasticCard;
             }
         }
