@@ -1,6 +1,6 @@
 package ru.sbrf.cu.Exceptions;
 
-public class NotEnoughATMMoneyException extends Exception {
+public class NotEnoughATMMoneyException extends ATMException {
 
     public NotEnoughATMMoneyException(String message) {
         super(message);

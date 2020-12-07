@@ -2,15 +2,18 @@ package ru.sbrf.cu.Impl;
 
 import lombok.SneakyThrows;
 import ru.sbrf.cu.ATM;
+import ru.sbrf.cu.Exceptions.ATMException;
 import ru.sbrf.cu.Exceptions.CardNotFoundException;
 import ru.sbrf.cu.Exceptions.NotEnoughATMMoneyException;
 import ru.sbrf.cu.Exceptions.NotEnoughMoneyException;
 import ru.sbrf.cu.PlasticCard;
 import ru.sbrf.cu.Enums.BanknoteType;
 
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Scanner;
 import java.util.Set;
+import java.util.concurrent.atomic.AtomicReference;
 
 import static ru.sbrf.cu.Utils.BanknoteOperations.depositBanknotes;
 
@@ -27,7 +30,7 @@ public class ATMImpl implements ATM {
         this.banknotes = banknotes;
     }
 
-    public PlasticCard withdrawMoney( long amount, PlasticCard cashCardToCheck ) throws CardNotFoundException, NotEnoughATMMoneyException, NotEnoughMoneyException {
+    public PlasticCard withdrawMoney( long amount, PlasticCard cashCardToCheck ) throws ATMException {
         for (PlasticCard plasticCard : paySystemDB) {
             if (plasticCard.equals(cashCardToCheck)) {
                 plasticCard.takeAmount( amount, banknotes ).printInfoWithdraw();
@@ -38,7 +41,7 @@ public class ATMImpl implements ATM {
         throw new CardNotFoundException();
     }
 
-    public PlasticCard depositMoney( HashMap<BanknoteType, Integer> putBanknotes, PlasticCard cashCardToCheck ) throws CardNotFoundException {
+    public PlasticCard depositMoney( HashMap<BanknoteType, Integer> putBanknotes, PlasticCard cashCardToCheck ) throws ATMException {
         for (PlasticCard plasticCard : paySystemDB) {
             if (plasticCard.equals(cashCardToCheck)) {
                 plasticCard.putBanknotes(putBanknotes).printInfoDeposit();
@@ -96,23 +99,17 @@ public class ATMImpl implements ATM {
                     do {
                         var putBanknotes = new HashMap<BanknoteType, Integer>();
 
-                        System.out.println( "Сколько положить купюр '" + BanknoteType.FIVETHOUSAND.getCaption() + "' ? (или 0 для выхода)" );
-                        int cnt1 = inputCardScanner.nextInt();
-                        putBanknotes.put(BanknoteType.FIVETHOUSAND, cnt1 > 0 ? cnt1 : 0);
+                        AtomicReference<Boolean> escapeZero = new AtomicReference<>(false);
+                        Arrays.asList(BanknoteType.values()).
+                                forEach(banknoteType -> {
+                                        System.out.println("Сколько положить купюр '" + banknoteType.getCaption() + "' ? (или 0 для выхода)");
+                                        int cnt = inputCardScanner.nextInt();
+                                        putBanknotes.put(banknoteType, cnt > 0 ? cnt : 0);
+                                        escapeZero.set(cnt > 0);
+                                    }
+                                );
 
-                        System.out.println( "Сколько положить купюр '" + BanknoteType.THOUSAND.getCaption() + "' ? (или 0 для выхода)" );
-                        int cnt2 = inputCardScanner.nextInt();
-                        putBanknotes.put(BanknoteType.THOUSAND, cnt2 > 0 ? cnt2 : 0);
-
-                        System.out.println( "Сколько положить купюр '" + BanknoteType.FIVEHUNDRED.getCaption() + "' ? (или 0 для выхода)" );
-                        int cnt3 = inputCardScanner.nextInt();
-                        putBanknotes.put(BanknoteType.FIVEHUNDRED, cnt3 > 0 ? cnt3 : 0);
-
-                        System.out.println( "Сколько положить купюр '" + BanknoteType.ONEHUNDRED.getCaption() + "' ? (или 0 для выхода)" );
-                        int cnt4 = inputCardScanner.nextInt();
-                        putBanknotes.put(BanknoteType.ONEHUNDRED, cnt4 > 0 ? cnt4 : 0);
-
-                        if (cnt1 == 0 && cnt1 == cnt2 && cnt2 == cnt3 && cnt3 == cnt4) {
+                        if (!escapeZero.get()) {
                             break;
                         }
 

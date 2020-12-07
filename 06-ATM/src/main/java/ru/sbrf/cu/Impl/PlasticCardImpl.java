@@ -1,5 +1,6 @@
 package ru.sbrf.cu.Impl;
 
+import ru.sbrf.cu.Exceptions.ATMException;
 import ru.sbrf.cu.Exceptions.NotEnoughATMMoneyException;
 import ru.sbrf.cu.Exceptions.NotEnoughMoneyException;
 import ru.sbrf.cu.OperationReceipt;
@@ -25,7 +26,7 @@ public class PlasticCardImpl implements PlasticCard {
         return balance;
     }
 
-    public OperationReceipt takeAmount(long amount, HashMap<BanknoteType, Integer> atmBanknotes) throws NotEnoughMoneyException, NotEnoughATMMoneyException {
+    public OperationReceipt takeAmount(long amount, HashMap<BanknoteType, Integer> atmBanknotes) throws ATMException {
 
         // Далее проверка на остаток на карте
         if ( amount > balance )

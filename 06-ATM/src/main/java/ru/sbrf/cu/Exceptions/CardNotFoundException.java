@@ -1,6 +1,6 @@
 package ru.sbrf.cu.Exceptions;
 
-public class CardNotFoundException extends Exception {
+public class CardNotFoundException extends ATMException {
 
     public CardNotFoundException(String message) {
         super(message);

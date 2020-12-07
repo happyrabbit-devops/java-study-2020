@@ -3,6 +3,7 @@ package ru.sbrf.cu.Impl;
 import ru.sbrf.cu.OperationReceipt;
 import ru.sbrf.cu.Enums.BanknoteType;
 
+import java.util.Arrays;
 import java.util.HashMap;
 
 public class OperationReceiptImpl implements OperationReceipt {
@@ -22,10 +23,9 @@ public class OperationReceiptImpl implements OperationReceipt {
 
     public void printInfoWithdraw() {
         System.out.println("С вашего счета было снято " + this.withdrawAmount + " рублей купюрами:");
-        System.out.println( BanknoteType.FIVETHOUSAND.getCaption() + ": " + banknotes.get(BanknoteType.FIVETHOUSAND) );
-        System.out.println( BanknoteType.THOUSAND.getCaption() + ": " + banknotes.get(BanknoteType.THOUSAND)) ;
-        System.out.println( BanknoteType.FIVEHUNDRED.getCaption() + ": " + banknotes.get(BanknoteType.FIVEHUNDRED) );
-        System.out.println( BanknoteType.ONEHUNDRED.getCaption() + ": " + banknotes.get(BanknoteType.ONEHUNDRED) );
+
+        Arrays.asList(BanknoteType.values()).
+                forEach(banknoteType -> System.out.println( banknoteType.getCaption() + ": " + banknotes.get(banknoteType) ));
     }
 
     public void printInfoDeposit() {
