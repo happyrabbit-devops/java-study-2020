@@ -22,9 +22,7 @@ public class ATMImpl implements ATM {
     // пароль для доступа к защищенным ячейкам
     private final String secretPassword = "uZVXMJ" ;
 
-    // делаем хэшмап т.к. требуется управление по ключу
-    //private HashMap<BanknoteType, Integer> banknotes;
-
+    // делаем хэшмап и привязку к ячейкам т.к. требуется управление по ключу и дополнительная логика для работы с ячейками (защита)
     private HashMap<BanknoteType, BanknoteCell> banknoteCells;
 
     private void initializeBanknoteCells(HashMap<BanknoteType, Integer> banknotes) {
@@ -34,7 +32,6 @@ public class ATMImpl implements ATM {
 
     public ATMImpl( Set<PlasticCard> paySystemDB, HashMap<BanknoteType, Integer> banknotes ) {
         this.paySystemDB = paySystemDB;
-        //this.banknotes = banknotes;
         initializeBanknoteCells(banknotes);
     }
 
