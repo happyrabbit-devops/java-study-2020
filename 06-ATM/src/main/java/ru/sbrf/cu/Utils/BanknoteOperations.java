@@ -1,26 +1,36 @@
 package ru.sbrf.cu.Utils;
 
 import ru.sbrf.cu.Enums.BanknoteType;
+import ru.sbrf.cu.Impl.BanknoteCell;
 
+import java.util.Arrays;
 import java.util.HashMap;
+import java.util.concurrent.atomic.AtomicLong;
+import java.util.concurrent.atomic.AtomicReference;
 
 public class BanknoteOperations {
-    public static void depositBanknotes(HashMap<BanknoteType, Integer> atmBanknotes, HashMap<BanknoteType, Integer> putBanknotes) {
-        atmBanknotes.put( BanknoteType.ONEHUNDRED, atmBanknotes.get(BanknoteType.ONEHUNDRED) + putBanknotes.get(BanknoteType.ONEHUNDRED) );
-        atmBanknotes.put( BanknoteType.FIVEHUNDRED, atmBanknotes.get(BanknoteType.FIVEHUNDRED) + putBanknotes.get(BanknoteType.FIVEHUNDRED) );
-        atmBanknotes.put( BanknoteType.THOUSAND, atmBanknotes.get(BanknoteType.THOUSAND) + putBanknotes.get(BanknoteType.THOUSAND) );
-        atmBanknotes.put( BanknoteType.FIVETHOUSAND, atmBanknotes.get(BanknoteType.FIVETHOUSAND) + putBanknotes.get(BanknoteType.FIVETHOUSAND) );
-    }
-    public static void withdrawBanknotes(HashMap<BanknoteType, Integer> atmBanknotes, HashMap<BanknoteType, Integer> withdrawBanknotes) {
-        atmBanknotes.put( BanknoteType.ONEHUNDRED, atmBanknotes.get(BanknoteType.ONEHUNDRED) - withdrawBanknotes.get(BanknoteType.ONEHUNDRED) );
-        atmBanknotes.put( BanknoteType.FIVEHUNDRED, atmBanknotes.get(BanknoteType.FIVEHUNDRED) - withdrawBanknotes.get(BanknoteType.FIVEHUNDRED) );
-        atmBanknotes.put( BanknoteType.THOUSAND, atmBanknotes.get(BanknoteType.THOUSAND) - withdrawBanknotes.get(BanknoteType.THOUSAND) );
-        atmBanknotes.put( BanknoteType.FIVETHOUSAND, atmBanknotes.get(BanknoteType.FIVETHOUSAND) - withdrawBanknotes.get(BanknoteType.FIVETHOUSAND) );
-    }
+
     public static long totalAmount(HashMap<BanknoteType, Integer> banknotes) {
-        return banknotes.get( BanknoteType.ONEHUNDRED ) * BanknoteType.ONEHUNDRED.getDenomination() +
-                banknotes.get( BanknoteType.FIVEHUNDRED ) * BanknoteType.FIVEHUNDRED.getDenomination() +
-                banknotes.get( BanknoteType.THOUSAND ) * BanknoteType.THOUSAND.getDenomination() +
-                banknotes.get( BanknoteType.FIVETHOUSAND ) * BanknoteType.FIVETHOUSAND.getDenomination();
+        long amount = 0;
+        for (BanknoteType banknoteType : BanknoteType.values()) {
+            amount += banknotes.get(banknoteType) * banknoteType.getDenomination();
+        }
+        return amount;
+    }
+    public static void withdrawBanknotes(HashMap<BanknoteType, BanknoteCell> banknoteCells, HashMap<BanknoteType, Integer> withdrawBanknotes, String password) {
+        Arrays.asList(BanknoteType.values()).
+                forEach(banknoteType -> {
+                    if (withdrawBanknotes.get(banknoteType) > 0) {
+                        banknoteCells.get(banknoteType).Withdraw(withdrawBanknotes.get(banknoteType), password);
+                    }
+                } );
+    }
+    public static void depositBanknotes(HashMap<BanknoteType, BanknoteCell> banknoteCells, HashMap<BanknoteType, Integer> putBanknotes, String password) {
+        Arrays.asList(BanknoteType.values()).
+                forEach(banknoteType -> {
+                if (putBanknotes.get(banknoteType) > 0) {
+                    banknoteCells.get(banknoteType).Deposit(putBanknotes.get(banknoteType), password);
+                }
+            } );
     }
 }

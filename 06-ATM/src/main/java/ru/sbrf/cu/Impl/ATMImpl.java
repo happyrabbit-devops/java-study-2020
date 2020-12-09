@@ -9,10 +9,7 @@ import ru.sbrf.cu.Exceptions.NotEnoughMoneyException;
 import ru.sbrf.cu.PlasticCard;
 import ru.sbrf.cu.Enums.BanknoteType;
 
-import java.util.Arrays;
-import java.util.HashMap;
-import java.util.Scanner;
-import java.util.Set;
+import java.util.*;
 import java.util.concurrent.atomic.AtomicReference;
 
 import static ru.sbrf.cu.Utils.BanknoteOperations.depositBanknotes;
@@ -22,18 +19,29 @@ public class ATMImpl implements ATM {
     // делаем сет так как все карты разные
     private Set<PlasticCard> paySystemDB;
 
+    // пароль для доступа к защищенным ячейкам
+    private final String secretPassword = "uZVXMJ" ;
+
     // делаем хэшмап т.к. требуется управление по ключу
-    private HashMap<BanknoteType, Integer> banknotes;
+    //private HashMap<BanknoteType, Integer> banknotes;
+
+    private HashMap<BanknoteType, BanknoteCell> banknoteCells;
+
+    private void initializeBanknoteCells(HashMap<BanknoteType, Integer> banknotes) {
+        this.banknoteCells = new HashMap<>();
+        banknotes.forEach((k,v) -> this.banknoteCells.put(k, new BanknoteCell(k, v)));
+    }
 
     public ATMImpl( Set<PlasticCard> paySystemDB, HashMap<BanknoteType, Integer> banknotes ) {
         this.paySystemDB = paySystemDB;
-        this.banknotes = banknotes;
+        //this.banknotes = banknotes;
+        initializeBanknoteCells(banknotes);
     }
 
     public PlasticCard withdrawMoney( long amount, PlasticCard cashCardToCheck ) throws ATMException {
         for (PlasticCard plasticCard : paySystemDB) {
             if (plasticCard.equals(cashCardToCheck)) {
-                plasticCard.takeAmount( amount, banknotes ).printInfoWithdraw();
+                plasticCard.takeAmount( amount, banknoteCells, secretPassword ).printInfoWithdraw();
                 System.out.println( "На вашем счету осталось денежных средств: " + plasticCard.getBalance() + " рублей" );
                 return plasticCard;
             }
@@ -46,8 +54,8 @@ public class ATMImpl implements ATM {
             if (plasticCard.equals(cashCardToCheck)) {
                 plasticCard.putBanknotes(putBanknotes).printInfoDeposit();
 
-                // Обновляем число банкнот в АТМ
-                depositBanknotes(banknotes, putBanknotes);
+                // Обновляем ячейки в АТМ
+                depositBanknotes(banknoteCells, putBanknotes, secretPassword );
 
                 return plasticCard;
             }

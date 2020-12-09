@@ -26,17 +26,17 @@ public class PlasticCardImpl implements PlasticCard {
         return balance;
     }
 
-    public OperationReceipt takeAmount(long amount, HashMap<BanknoteType, Integer> atmBanknotes) throws ATMException {
+    public OperationReceipt takeAmount(long amount, HashMap<BanknoteType, BanknoteCell> banknoteCells, String passwordATM) throws ATMException {
 
         // Далее проверка на остаток на карте
         if ( amount > balance )
             throw new NotEnoughMoneyException();
 
         // Проверка остатков банкнот в банкомате
-        int cnt5000 = atmBanknotes.get( BanknoteType.FIVETHOUSAND );
-        int cnt1000 = atmBanknotes.get( BanknoteType.THOUSAND );
-        int cnt500 = atmBanknotes.get( BanknoteType.FIVEHUNDRED );
-        int cnt100 = atmBanknotes.get( BanknoteType.ONEHUNDRED );
+        int cnt5000 = banknoteCells.get( BanknoteType.FIVETHOUSAND ).getCount();
+        int cnt1000 = banknoteCells.get( BanknoteType.THOUSAND ).getCount();
+        int cnt500 = banknoteCells.get( BanknoteType.FIVEHUNDRED ).getCount();
+        int cnt100 = banknoteCells.get( BanknoteType.ONEHUNDRED ).getCount();
 
         if ( cnt5000 == 0 && cnt5000 == cnt1000 && cnt1000 == cnt500 && cnt500 == cnt100 )
             throw new NotEnoughATMMoneyException();
@@ -71,7 +71,7 @@ public class PlasticCardImpl implements PlasticCard {
         withdrawBanknotes.put( BanknoteType.FIVETHOUSAND, cntWithdraw5000 );
 
         // Обновляем число банкнот в АТМ
-        withdrawBanknotes( atmBanknotes, withdrawBanknotes );
+        withdrawBanknotes( banknoteCells, withdrawBanknotes, passwordATM );
 
         amount = cntWithdraw5000*den5000 + cntWithdraw1000*den1000 + cntWithdraw500*den500 + cntWithdraw100*den100;
         decBalance( amount );

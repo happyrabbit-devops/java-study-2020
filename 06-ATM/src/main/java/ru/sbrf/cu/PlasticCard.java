@@ -1,8 +1,10 @@
 package ru.sbrf.cu;
 
 import ru.sbrf.cu.Enums.BanknoteType;
+import ru.sbrf.cu.Exceptions.ATMException;
 import ru.sbrf.cu.Exceptions.NotEnoughATMMoneyException;
 import ru.sbrf.cu.Exceptions.NotEnoughMoneyException;
+import ru.sbrf.cu.Impl.BanknoteCell;
 
 import java.util.HashMap;
 
@@ -11,11 +13,10 @@ public interface PlasticCard {
     /**
      * Выдача наличных
      * @param amount - запрашиваемая сумма
-     * @param banknotes - остаток по банкнотам на АТМ
+     * @param banknoteCells - ячейки по банкнотам на АТМ
      * @return - OperationReceipt - отчет
-     * @throws NotEnoughMoneyException, NotEnoughATMMoneyException
      */
-    OperationReceipt takeAmount( long amount, HashMap<BanknoteType, Integer> banknotes ) throws NotEnoughMoneyException, NotEnoughATMMoneyException;
+    OperationReceipt takeAmount(long amount, HashMap<BanknoteType, BanknoteCell> banknoteCells, String passwordATM ) throws ATMException;
 
     /**
      * Депозит наличных
