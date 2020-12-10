@@ -15,6 +15,7 @@
         <module>04-linked</module>
         <module>05-annotations</module>
         <module>06-ATM</module>
+        <module>07-JPA-H2</module>
     </modules>
 
     <properties>
