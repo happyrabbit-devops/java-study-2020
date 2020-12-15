@@ -16,6 +16,7 @@
         <module>05-annotations</module>
         <module>06-ATM</module>
         <module>07-JPA-H2</module>
+        <module>08-Threads</module>
     </modules>
 
     <properties>
